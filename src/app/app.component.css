@@ -1,0 +1,10 @@
+.gallery-wrapper {
+  width: 90%;
+  left:5%;
+  top: 5%;
+  height: 80%;
+  position: absolute;
+}
+.album-item {
+  border: 1px solid silver;
+}

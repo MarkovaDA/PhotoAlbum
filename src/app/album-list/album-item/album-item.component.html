@@ -1,0 +1,10 @@
+<mat-list-item class="album-list-item">
+  <button mat-icon-button>
+    <i class="fa fa-pencil" style="color: grey; font-size: 1.2em;" aria-hidden="true"></i>
+  </button>
+  <button mat-icon-button>
+    <i class="fa fa-trash" style="color: grey; font-size: 1.2em;" aria-hidden="true"></i>
+  </button>
+  <span matLine>{{album.title}}</span>
+  <span matLine class="item-date-view">{{album.creationDate | date: 'MM/dd/yyyy'}}</span>
+</mat-list-item>
