@@ -15,6 +15,7 @@ import { PhotoItemComponent } from './photo-list/photo-item/photo-item.component
 import { AddAlbumComponent } from './album-list/add-album/add-album.component';
 import { AddPhotoComponent } from './photo-list/add-photo/add-photo.component';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
+import { AutofocusDirective } from "./directives/AutofocusDirective";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
     PhotoItemComponent,
     AddAlbumComponent,
     AddPhotoComponent,
-    ModalDialogComponent
+    ModalDialogComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,
@@ -42,3 +44,4 @@ import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+//https://material.io/icons/ - список иконок

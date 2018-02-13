@@ -20,13 +20,17 @@ export class AlbumListComponent implements OnInit {
   ngOnInit() {
   }
 
+  createAlbum() {
+    const length = this.albumList.length;
+    this.albumList.unshift(new Album(`Album № ${length + 1}`, false));
+  }
+
   deleteAlbum(album: Album) {
     let modalDialog = this.openModalDialog(album);
     modalDialog.afterClosed().subscribe(album => {
       if (album) {
         //удаление альбома из списка
-        const index = this.albumList.indexOf(album);
-        this.albumList.splice(index, 1);
+        this.removeAlbumFromList(album);
       }
     });
   }
@@ -36,5 +40,10 @@ export class AlbumListComponent implements OnInit {
       width: 'auto',
       data: data
     });
+  }
+
+  removeAlbumFromList(album: Album) {
+    const index = this.albumList.indexOf(album);
+    this.albumList.splice(index, 1);
   }
 }

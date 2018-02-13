@@ -13,13 +13,15 @@
     <!--список альбомов-->
     <div style="height: 400px; overflow-y: scroll;">
       <mat-list class = "album-list">
-        <app-album-item *ngFor="let album of albumList" [album]="album" (onAlbumDeleteClick)="deleteAlbum($event)"></app-album-item>
+        <app-album-item *ngFor="let album of albumList" [album]="album"
+                        (onAlbumDelete)="deleteAlbum($event)"
+                        (onAlbumSelfDelete)="removeAlbumFromList($event)"></app-album-item>
       </mat-list>
     </div>
   </div>
   <div class="card-footer" style="background: none;">
     <div class="float-right">
-      <button type="button" class="btn btn-indigo px-3" style="border-radius: 50%;">
+      <button type="button" class="btn btn-indigo px-3" (click)="createAlbum()" style="border-radius: 50%;">
         <i class="fa fa-plus" aria-hidden="true"></i>
       </button>
     </div>

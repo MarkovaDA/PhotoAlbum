@@ -1,5 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Album} from '../../model/Album';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
+import { Album } from '../../model/Album';
+
 
 @Component({
   selector: 'app-album-item',
@@ -7,20 +16,30 @@ import {Album} from '../../model/Album';
   styleUrls: ['./album-item.component.css']
 })
 export class AlbumItemComponent implements OnInit {
-  @Input()
-  album: Album;
-
-  @Output()
-  onAlbumDeleteClick: EventEmitter<Album>;
+  @Input() album: Album;
+  @Output() onAlbumDelete: EventEmitter<Album>;
+  @Output() onAlbumSelfDelete: EventEmitter<Album>;
+  @ViewChild('albumTitleField') albumTitleField: ElementRef;
 
   constructor() {
-    this.onAlbumDeleteClick = new EventEmitter();
+    this.onAlbumDelete = new EventEmitter();
+    this.onAlbumSelfDelete = new EventEmitter();
   }
 
   ngOnInit() {
+
   }
 
   onDeleteBtnClick() {
-    this.onAlbumDeleteClick.emit(this.album);
+    this.onAlbumDelete.emit(this.album);
+  }
+
+  onNewElementCancelBtnClick() {
+    this.onAlbumSelfDelete.emit(this.album);
+  }
+
+  onNewElementConfirmBtnClick(newTitle: string) {
+    this.album.title = newTitle;
+    this.album.isConfirmed = true;
   }
 }

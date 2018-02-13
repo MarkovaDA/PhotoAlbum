@@ -1,10 +1,22 @@
-<mat-list-item class="album-list-item">
+<mat-list-item *ngIf="album.isConfirmed" class="album-list-item">
   <button mat-icon-button>
-    <i class="fa fa-pencil" style="font-size: 1.2em;" aria-hidden="true"></i>
+    <mat-icon>edit</mat-icon>
   </button>
   <button mat-icon-button (click)="onDeleteBtnClick()">
-    <i class="fa fa-trash" style="font-size: 1.2em;" aria-hidden="true"></i>
+    <mat-icon>clear</mat-icon>
   </button>
   <span matLine>{{album.title}}</span>
   <span matLine class="item-date-view">{{album.creationDate | date: 'MM/dd/yyyy'}}</span>
+</mat-list-item>
+
+<mat-list-item *ngIf="!album.isConfirmed" class="album-list-item">
+  <button mat-button matSuffix mat-icon-button>
+    <mat-icon [color] = "'primary'" (click)="onNewElementConfirmBtnClick(albumTitleField.value)">check</mat-icon>
+  </button>
+  <button mat-button matSuffix mat-icon-button>
+    <mat-icon [color] = "'primary'" (click)="onNewElementCancelBtnClick()">clear</mat-icon>
+  </button>
+  <mat-form-field matLine>
+    <input matInput placeholder="New album" AutoFocus [(value)]="album.title" #albumTitleField>
+  </mat-form-field>
 </mat-list-item>
