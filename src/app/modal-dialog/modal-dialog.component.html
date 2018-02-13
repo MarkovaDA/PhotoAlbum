@@ -1,0 +1,8 @@
+<h4 mat-dialog-title>Confirm your action</h4>
+<div mat-dialog-content>
+  <p>Do you really want to delete <b>{{albumTitle}}</b>?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button cdkFocusInitial (click)="onNoModalBtnClick()">No</button>
+  <button mat-button [mat-dialog-close]="data">Ok</button>
+</div>

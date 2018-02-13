@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatListModule, MatInputModule, MatIconModule } from '@angular/material';
+import { MatButtonModule,
+  MatListModule,
+  MatInputModule,
+  MatIconModule,
+  MatDialogModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { AlbumListComponent } from './album-list/album-list.component';
@@ -10,6 +14,7 @@ import { AlbumItemComponent } from './album-list/album-item/album-item.component
 import { PhotoItemComponent } from './photo-list/photo-item/photo-item.component';
 import { AddAlbumComponent } from './album-list/add-album/add-album.component';
 import { AddPhotoComponent } from './photo-list/add-photo/add-photo.component';
+import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,8 @@ import { AddPhotoComponent } from './photo-list/add-photo/add-photo.component';
     AlbumItemComponent,
     PhotoItemComponent,
     AddAlbumComponent,
-    AddPhotoComponent
+    AddPhotoComponent,
+    ModalDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +34,11 @@ import { AddPhotoComponent } from './photo-list/add-photo/add-photo.component';
     MatButtonModule,
     MatListModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [],
+  entryComponents: [ModalDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

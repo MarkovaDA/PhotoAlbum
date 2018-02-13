@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Album} from '../../model/Album';
 
 @Component({
@@ -9,8 +9,18 @@ import {Album} from '../../model/Album';
 export class AlbumItemComponent implements OnInit {
   @Input()
   album: Album;
-  constructor() { }
+
+  @Output()
+  onAlbumDeleteClick: EventEmitter<Album>;
+
+  constructor() {
+    this.onAlbumDeleteClick = new EventEmitter();
+  }
 
   ngOnInit() {
+  }
+
+  onDeleteBtnClick() {
+    this.onAlbumDeleteClick.emit(this.album);
   }
 }

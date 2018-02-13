@@ -13,7 +13,7 @@
     <!--список альбомов-->
     <div style="height: 400px; overflow-y: scroll;">
       <mat-list class = "album-list">
-        <app-album-item *ngFor="let album of albumList" [album]="album"></app-album-item>
+        <app-album-item *ngFor="let album of albumList" [album]="album" (onAlbumDeleteClick)="deleteAlbum($event)"></app-album-item>
       </mat-list>
     </div>
   </div>
