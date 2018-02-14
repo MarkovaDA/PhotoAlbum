@@ -10,11 +10,13 @@ import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 })
 export class AlbumListComponent implements OnInit {
   albumList: Album[];
+  private sourceList: Album[];
   constructor(public dialog: MatDialog) {
     this.albumList = [];
     for (let i = 0; i < 10; i++) {
       this.albumList.push(new Album(`Album № ${i + 1}`, true));
     }
+    this.sourceList = [...this.albumList];
   }
 
   ngOnInit() {
@@ -35,6 +37,21 @@ export class AlbumListComponent implements OnInit {
     });
   }
 
+  removeAlbumFromList(album: Album) {
+    const index = this.albumList.indexOf(album);
+    this.albumList.splice(index, 1);
+  }
+
+  findAlbumsByPattern(pattern: string) {
+    if (pattern == '') {
+      this.resetSearchResults();
+      return;
+    }
+    this.albumList = this.albumList.filter((album) => {
+      return album.title.includes(pattern)
+    });
+  }
+
   private openModalDialog(data: Album) {
     return this.dialog.open(ModalDialogComponent, {
       width: 'auto',
@@ -42,8 +59,7 @@ export class AlbumListComponent implements OnInit {
     });
   }
 
-  removeAlbumFromList(album: Album) {
-    const index = this.albumList.indexOf(album);
-    this.albumList.splice(index, 1);
+  private resetSearchResults() {
+    this.albumList = this.sourceList;
   }
 }

@@ -5,7 +5,7 @@
         <h4>Albums</h4>
       </div>
       <div class="col-auto">
-        <app-search></app-search>
+        <app-search (onSearchPatternReady)="findAlbumsByPattern($event)"></app-search>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
       <mat-list class = "album-list">
         <app-album-item *ngFor="let album of albumList" [album]="album"
                         (onAlbumDelete)="deleteAlbum($event)"
-                        (onAlbumSelfDelete)="removeAlbumFromList($event)"></app-album-item>
+                        (onAlbumNewestDelete)="removeAlbumFromList($event)"></app-album-item>
       </mat-list>
     </div>
   </div>

@@ -1,6 +1,10 @@
 <mat-form-field>
-  <input matInput placeholder="Search">
+  <input matInput placeholder="Search" [formControl]="searchField">
   <button mat-button matSuffix mat-icon-button aria-label="Search">
     <mat-icon>search</mat-icon>
   </button>
+  <button mat-button matSuffix mat-icon-button (click)="onResetSearchBtnClick()">
+    <mat-icon>clear</mat-icon>
+  </button>
 </mat-form-field>
+

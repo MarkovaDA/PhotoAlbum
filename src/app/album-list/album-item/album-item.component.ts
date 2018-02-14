@@ -18,12 +18,13 @@ import { Album } from '../../model/Album';
 export class AlbumItemComponent implements OnInit {
   @Input() album: Album;
   @Output() onAlbumDelete: EventEmitter<Album>;
-  @Output() onAlbumSelfDelete: EventEmitter<Album>;
+  @Output() onAlbumNewestDelete: EventEmitter<Album>;
   @ViewChild('albumTitleField') albumTitleField: ElementRef;
+  datePattern = 'MM/dd/yyyy';
 
   constructor() {
     this.onAlbumDelete = new EventEmitter();
-    this.onAlbumSelfDelete = new EventEmitter();
+    this.onAlbumNewestDelete = new EventEmitter();
   }
 
   ngOnInit() {
@@ -35,11 +36,22 @@ export class AlbumItemComponent implements OnInit {
   }
 
   onNewElementCancelBtnClick() {
-    this.onAlbumSelfDelete.emit(this.album);
+    this.onAlbumNewestDelete.emit(this.album);
   }
 
-  onNewElementConfirmBtnClick(newTitle: string) {
-    this.album.title = newTitle;
+  onNewElementConfirmBtnClick() {
+    this.confirmNewAlbum();
+  }
+
+  onChangeInput(key) {
+    const {code} = key;
+    if (code == 'Enter') {
+      this.confirmNewAlbum();
+    }
+  }
+
+  private confirmNewAlbum() {
+    this.album.title = this.albumTitleField.nativeElement.value;
     this.album.isConfirmed = true;
   }
 }
