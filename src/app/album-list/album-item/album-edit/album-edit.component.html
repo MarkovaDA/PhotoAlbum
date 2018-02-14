@@ -1,0 +1,11 @@
+<mat-list-item *ngIf="!album.isDeleted()" class="album-list-item">
+  <mat-form-field matLine>
+    <input matInput placeholder="Edit album" AutoFocus [(value)]="album.title" #albumEditedTitleField (keypress)="onInputEntered($event)">
+  </mat-form-field>
+  <button mat-button matSuffix mat-icon-button>
+    <mat-icon [color] = "'primary'" (click)="onEditedElementConfirmBtnClick()">check</mat-icon>
+  </button>
+  <button mat-button matSuffix mat-icon-button (click)="onEditResetBtnClick()">
+    <mat-icon [color] = "'primary'">cancel</mat-icon>
+  </button>
+</mat-list-item>

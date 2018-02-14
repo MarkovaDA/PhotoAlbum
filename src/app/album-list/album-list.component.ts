@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Album, AlbumMode } from '../model/Album';
 import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
@@ -8,7 +8,7 @@ import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
   templateUrl: './album-list.component.html',
   styleUrls: ['./album-list.component.css']
 })
-export class AlbumListComponent implements OnInit {
+export class AlbumListComponent implements OnInit, OnDestroy {
   albumList: Album[];
   private sourceList: Album[];
   constructor(public dialog: MatDialog) {
@@ -19,8 +19,7 @@ export class AlbumListComponent implements OnInit {
     this.sourceList = [...this.albumList];
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   createAlbum() {
     const length = this.albumList.length;
@@ -63,5 +62,9 @@ export class AlbumListComponent implements OnInit {
 
   private resetSearchResults() {
     this.albumList = this.sourceList;
+  }
+
+  ngOnDestroy() {
+    this.albumList = this.albumList.filter(album => {return album.mode != AlbumMode.Deleted});
   }
 }

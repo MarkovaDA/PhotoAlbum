@@ -1,7 +1,8 @@
 export enum AlbumMode {
   Newest,//вновь созданный
   Edited, //редактируемый
-  Confirmed //подтвержденный
+  Confirmed, //подтвержденный
+  Deleted
 }
 
 export class Album {
@@ -25,5 +26,9 @@ export class Album {
 
   public isEdited() {
     return this.mode == AlbumMode.Edited;
+  }
+
+  public isDeleted() {
+    return this.mode == AlbumMode.Deleted;
   }
 }

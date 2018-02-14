@@ -1,0 +1,10 @@
+.album-list-item {
+  cursor: pointer;
+  height: 80px;
+}
+.item-date-view {
+  color: darkgrey;
+}
+.album-list-item:hover {
+  background-color: #ebebeb;
+}

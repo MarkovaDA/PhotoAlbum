@@ -1,0 +1,10 @@
+<mat-list-item *ngIf="!album.isDeleted();" class="album-list-item">
+  <button mat-icon-button (click)="onEditBtnClick()">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-icon-button (click)="onDeleteBtnClick()">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <span matLine>{{album.title}}</span>
+  <span matLine class="item-date-view">{{album.creationDate | date: datePattern}}</span>
+</mat-list-item>
