@@ -1,5 +1,5 @@
-<mat-list-item *ngIf="album.isConfirmed; else newAlbumTemplate" class="album-list-item">
-  <button mat-icon-button>
+<mat-list-item *ngIf="album.isConfirmed();" class="album-list-item">
+  <button mat-icon-button (click)="onEditBtnClick()">
     <mat-icon>edit</mat-icon>
   </button>
   <button mat-icon-button (click)="onDeleteBtnClick()">
@@ -8,21 +8,31 @@
   <span matLine>{{album.title}}</span>
   <span matLine class="item-date-view">{{album.creationDate | date: datePattern}}</span>
 </mat-list-item>
-<ng-template #newAlbumTemplate>
-  <mat-list-item *ngIf="!album.isConfirmed" class="album-list-item">
-    <button mat-button matSuffix mat-icon-button>
-      <mat-icon [color] = "'primary'" (click)="onNewElementConfirmBtnClick()">check</mat-icon>
-    </button>
-    <button mat-button matSuffix mat-icon-button>
-      <mat-icon [color] = "'primary'" (click)="onNewElementCancelBtnClick()">undo</mat-icon>
-    </button>
-    <mat-form-field matLine>
-      <input matInput placeholder="New album" AutoFocus [(value)]="album.title" #albumTitleField (keypress)="onChangeInput($event)">
-    </mat-form-field>
-  </mat-list-item>
-</ng-template>
 
-<ng-template #editAlarmTemplate>
+<mat-list-item *ngIf="album.isNewest()" class="album-list-item">
+  <button mat-button matSuffix mat-icon-button>
+    <mat-icon [color] = "'primary'" (click)="onNewElementConfirmBtnClick()">check</mat-icon>
+  </button>
+  <button mat-button matSuffix mat-icon-button>
+    <mat-icon [color] = "'primary'" (click)="onNewElementCancelBtnClick()">undo</mat-icon>
+  </button>
+  <mat-form-field matLine>
+    <input matInput placeholder="New album" AutoFocus [(value)]="album.title" #albumTitleField (keypress)="onInputEntered($event)">
+  </mat-form-field>
+</mat-list-item>
 
-</ng-template>
+<mat-list-item *ngIf="album.isEdited()" class="album-list-item">
+  <mat-form-field matLine>
+    <input matInput placeholder="Edit album" AutoFocus [(value)]="album.title" #albumEditedTitleField>
+  </mat-form-field>
+  <button mat-button matSuffix mat-icon-button>
+    <mat-icon [color] = "'primary'" (click)="onEditedElementConfirmBtnClick()">check</mat-icon>
+  </button>
+  <button mat-button matSuffix mat-icon-button (click)="onEditResetBtnClick()">
+    <mat-icon [color] = "'primary'">cancel</mat-icon>
+  </button>
+</mat-list-item>
+
+<!--<ng-template #editAlarmTemplate>
+</ng-template> -->
 

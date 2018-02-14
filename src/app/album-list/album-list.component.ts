@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Album } from '../model/Album';
+import { Album, AlbumMode } from '../model/Album';
 import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 
 @Component({
@@ -14,7 +14,7 @@ export class AlbumListComponent implements OnInit {
   constructor(public dialog: MatDialog) {
     this.albumList = [];
     for (let i = 0; i < 10; i++) {
-      this.albumList.push(new Album(`Album № ${i + 1}`, true));
+      this.albumList.push(new Album(`Album № ${i + 1}`));
     }
     this.sourceList = [...this.albumList];
   }
@@ -24,7 +24,9 @@ export class AlbumListComponent implements OnInit {
 
   createAlbum() {
     const length = this.albumList.length;
-    this.albumList.unshift(new Album(`Album № ${length + 1}`, false));
+    const newAlbum = new Album(`Album № ${length + 1}`);
+    newAlbum.mode = AlbumMode.Newest;
+    this.albumList.unshift(newAlbum);
   }
 
   deleteAlbum(album: Album) {

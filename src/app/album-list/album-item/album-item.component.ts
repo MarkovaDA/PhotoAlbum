@@ -7,7 +7,7 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { Album } from '../../model/Album';
+import { Album, AlbumMode } from '../../model/Album';
 
 
 @Component({
@@ -20,6 +20,8 @@ export class AlbumItemComponent implements OnInit {
   @Output() onAlbumDelete: EventEmitter<Album>;
   @Output() onAlbumNewestDelete: EventEmitter<Album>;
   @ViewChild('albumTitleField') albumTitleField: ElementRef;
+  @ViewChild('albumEditedTitleField') albumEditedTitleField: ElementRef;
+
   datePattern = 'MM/dd/yyyy';
 
   constructor() {
@@ -35,23 +37,35 @@ export class AlbumItemComponent implements OnInit {
     this.onAlbumDelete.emit(this.album);
   }
 
+  onEditBtnClick() {
+    this.album.mode = AlbumMode.Edited;
+  }
+
   onNewElementCancelBtnClick() {
     this.onAlbumNewestDelete.emit(this.album);
   }
 
   onNewElementConfirmBtnClick() {
-    this.confirmNewAlbum();
+    this.confirmNewAlbum(this.albumTitleField.nativeElement.value);
   }
 
-  onChangeInput(key) {
+  onEditedElementConfirmBtnClick() {
+    this.confirmNewAlbum(this.albumEditedTitleField.nativeElement.value);
+  }
+
+  onInputEntered(key) {
     const {code} = key;
     if (code == 'Enter') {
-      this.confirmNewAlbum();
+      this.confirmNewAlbum(this.albumTitleField.nativeElement.value);
     }
   }
 
-  private confirmNewAlbum() {
-    this.album.title = this.albumTitleField.nativeElement.value;
-    this.album.isConfirmed = true;
+  private confirmNewAlbum(title: string) {
+    this.album.title = title;
+    this.album.mode = AlbumMode.Confirmed;
+  }
+
+  onEditResetBtnClick() {
+    this.album.mode = AlbumMode.Confirmed;
   }
 }
