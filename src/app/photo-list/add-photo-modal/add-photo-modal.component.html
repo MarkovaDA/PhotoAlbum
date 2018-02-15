@@ -6,13 +6,13 @@
 <div mat-dialog-content>
   <div class="row">
     <div class="col-md-12">
-      <input type="file" value="choose file">
+      <input type="file" value="choose file" accept="image/*" (change)="onChangeFileField($event)">
     </div>
   </div>
   <div class="row py-2">
     <div class="col-md-12">
       <mat-form-field style="width:100% !important;">
-        <textarea matInput placeholder="Description"></textarea>
+        <textarea matInput placeholder="Description" [(ngModel)]="newPhoto.description"></textarea>
       </mat-form-field>
     </div>
   </div>
@@ -20,7 +20,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="float-right">
-      <button mat-button cdkFocusInitial>ok</button>
+      <button mat-button cdkFocusInitial [mat-dialog-close]="newPhoto">ok</button>
       <button mat-button (click)="onCancelModalBtnClick()">cancel</button>
     </div>
   </div>

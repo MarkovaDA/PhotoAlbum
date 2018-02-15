@@ -20,7 +20,10 @@ export class PhotoListComponent implements OnInit {
       data: null
     });
     addPhotoModalDialog.afterClosed().subscribe(image => {
-      console.log('after closed');
+      if (image) {
+        //добавить фотографию в список и отобразить на экране
+        //потография должна оссациироваться с альбомом
+      }
     });
   }
 }
