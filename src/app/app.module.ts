@@ -13,13 +13,12 @@ import { AlbumListComponent } from './album-list/album-list.component';
 import { PhotoListComponent } from './photo-list/photo-list.component';
 import { AlbumItemComponent } from './album-list/album-item/album-item.component';
 import { PhotoItemComponent } from './photo-list/photo-item/photo-item.component';
-import { AddPhotoComponent } from './photo-list/add-photo/add-photo.component';
-import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
+import { DeleteModalDialogComponent } from './album-list/delete-modal-dialog/modal-dialog.component';
 import { AutofocusDirective } from "./directives/AutofocusDirective";
 import { AlbumNewComponent } from "./album-list/album-item/album-new/album-new.component";
 import { AlbumEditComponent } from "./album-list/album-item/album-edit/album-edit.component";
 import { AlbumConfirmedComponent } from "./album-list/album-item/album-confirmed/album-confirmed.component";
-
+import { AddPhotoModalComponent } from "./photo-list/add-photo-modal/add-photo-modal.component";
 
 
 @NgModule({
@@ -30,12 +29,12 @@ import { AlbumConfirmedComponent } from "./album-list/album-item/album-confirmed
     PhotoListComponent,
     AlbumItemComponent,
     PhotoItemComponent,
-    AddPhotoComponent,
-    ModalDialogComponent,
+    DeleteModalDialogComponent,
     AutofocusDirective,
     AlbumNewComponent,
     AlbumEditComponent,
-    AlbumConfirmedComponent
+    AlbumConfirmedComponent,
+    AddPhotoModalComponent
   ],
   imports: [
     BrowserModule,
@@ -49,9 +48,8 @@ import { AlbumConfirmedComponent } from "./album-list/album-item/album-confirmed
     MatDialogModule
   ],
   providers: [],
-  entryComponents: [ModalDialogComponent],
+  entryComponents: [DeleteModalDialogComponent, AddPhotoModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 //https://material.io/icons/ - список иконок
-//форма добавления фотографии

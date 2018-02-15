@@ -6,9 +6,9 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   templateUrl: './modal-dialog.component.html',
   styleUrls: ['./modal-dialog.component.css']
 })
-export class ModalDialogComponent implements OnInit {
+export class DeleteModalDialogComponent implements OnInit {
   albumTitle: string;
-  constructor(public dialogRef: MatDialogRef<ModalDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<DeleteModalDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     this.albumTitle = data.title;
   }
@@ -19,5 +19,4 @@ export class ModalDialogComponent implements OnInit {
   onNoModalBtnClick() {
     this.dialogRef.close();
   }
-
 }

@@ -1,7 +1,7 @@
-import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Album, AlbumMode } from '../model/Album';
-import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
+import { DeleteModalDialogComponent } from './delete-modal-dialog/modal-dialog.component';
 
 @Component({
   selector: 'app-album-list',
@@ -29,7 +29,7 @@ export class AlbumListComponent implements OnInit, OnDestroy {
   }
 
   deleteAlbum(album: Album) {
-    let modalDialog = this.openModalDialog(album);
+    const modalDialog = this.openModalDialog(album);
     modalDialog.afterClosed().subscribe(album => {
       if (album) {
         //удаление альбома из списка
@@ -54,7 +54,7 @@ export class AlbumListComponent implements OnInit, OnDestroy {
   }
 
   private openModalDialog(data: Album) {
-    return this.dialog.open(ModalDialogComponent, {
+    return this.dialog.open(DeleteModalDialogComponent, {
       width: 'auto',
       data: data
     });

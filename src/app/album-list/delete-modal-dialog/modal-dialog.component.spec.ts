@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddPhotoComponent } from './add-photo.component';
+import { DeleteModalDialogComponent } from './modal-dialog.component';
 
-describe('AddPhotoComponent', () => {
-  let component: AddPhotoComponent;
-  let fixture: ComponentFixture<AddPhotoComponent>;
+describe('DeleteModalDialogComponent', () => {
+  let component: DeleteModalDialogComponent;
+  let fixture: ComponentFixture<DeleteModalDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddPhotoComponent ]
+      declarations: [ DeleteModalDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddPhotoComponent);
+    fixture = TestBed.createComponent(DeleteModalDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
