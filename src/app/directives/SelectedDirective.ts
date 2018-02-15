@@ -8,11 +8,10 @@ export class SelectedDirective implements OnInit {
   constructor(private elementRef: ElementRef) {}
 
   ngOnInit() {
-
+    //передавать selectedElement
   }
 
   @HostListener('click') onElemClick() {
-    console.log(this.isClicked);
     if (this.isClicked) {
       this.elementRef.nativeElement.style.borderLeft = '3px solid #2b2bc4';
       this.elementRef.nativeElement.style.background = 'lavender';

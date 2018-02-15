@@ -8,3 +8,7 @@
 .album-list-item:hover {
   background-color: #ebebeb;
 }
+.selected {
+  border-left: 3px solid #2b2bc4;
+  background: lavender;
+}

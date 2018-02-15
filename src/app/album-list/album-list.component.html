@@ -15,7 +15,7 @@
       <mat-list class = "album-list">
         <app-album-item *ngFor="let album of albumList" [album]="album"
                         (onAlbumDelete)="deleteAlbum($event)"
-                        (onAlbumNewestDelete)="removeAlbumFromList($event)" (click)="switchSelectedAlbum(album)">
+                        (onAlbumNewestDelete)="removeAlbumFromList($event)" (click)="switchSelectedAlbum(album)" [isActive]="album == selectedAlbum">
         </app-album-item>
       </mat-list>
     </div>

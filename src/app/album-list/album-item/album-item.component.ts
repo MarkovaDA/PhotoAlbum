@@ -1,11 +1,11 @@
 import {
   Component,
   EventEmitter,
-  Input, OnDestroy,
+  Input,
   OnInit,
   Output,
 } from '@angular/core';
-import { Album, AlbumMode } from '../../model/Album';
+import { Album } from '../../model/Album';
 
 
 @Component({
@@ -15,10 +15,12 @@ import { Album, AlbumMode } from '../../model/Album';
 })
 export class AlbumItemComponent implements OnInit {
   @Input() album: Album;
+  @Input() isActive: boolean;
   @Output() onAlbumDelete: EventEmitter<Album>;
 
   constructor() {
     this.onAlbumDelete = new EventEmitter();
+    this.isActive = false;
   }
 
   ngOnInit() {}

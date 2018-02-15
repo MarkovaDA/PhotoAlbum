@@ -8,6 +8,7 @@ import { Album, AlbumMode } from "../../../model/Album";
 })
 export class AlbumConfirmedComponent implements OnInit {
   @Input() album: Album;
+  @Input() isActive: boolean;
   @Output() onAlbumDelete: EventEmitter<Album>;
   datePattern = 'MM/dd/yyyy';
 
