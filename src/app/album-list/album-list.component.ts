@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Album, AlbumMode } from '../model/Album';
 import { DeleteModalDialogComponent } from './delete-modal-dialog/modal-dialog.component';
@@ -10,16 +10,26 @@ import { DeleteModalDialogComponent } from './delete-modal-dialog/modal-dialog.c
 })
 export class AlbumListComponent implements OnInit, OnDestroy {
   albumList: Album[];
+  selectedAlbum: Album; //выбранный альбом (с которым в данный момент ведет работу пользователь)
   private sourceList: Album[];
+
+  @Output() onSelectedAlbumChanged: EventEmitter<Album>;
+
   constructor(public dialog: MatDialog) {
     this.albumList = [];
+
     for (let i = 0; i < 10; i++) {
       this.albumList.push(new Album(`Album № ${i + 1}`));
     }
+    this.selectedAlbum = this.albumList[0];
+    this.onSelectedAlbumChanged = new EventEmitter();
+
     this.sourceList = [...this.albumList];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onSelectedAlbumChanged.emit(this.selectedAlbum);
+  }
 
   createAlbum() {
     const length = this.albumList.length;
@@ -51,6 +61,11 @@ export class AlbumListComponent implements OnInit, OnDestroy {
     this.albumList = this.albumList.filter((album) => {
       return album.title.includes(pattern)
     });
+  }
+
+  switchSelectedAlbum(newAlbum: Album) {
+    this.selectedAlbum = newAlbum;
+    this.onSelectedAlbumChanged.emit(this.selectedAlbum);
   }
 
   private openModalDialog(data: Album) {

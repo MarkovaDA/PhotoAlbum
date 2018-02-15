@@ -19,6 +19,7 @@ import { AlbumNewComponent } from "./album-list/album-item/album-new/album-new.c
 import { AlbumEditComponent } from "./album-list/album-item/album-edit/album-edit.component";
 import { AlbumConfirmedComponent } from "./album-list/album-item/album-confirmed/album-confirmed.component";
 import { AddPhotoModalComponent } from "./photo-list/add-photo-modal/add-photo-modal.component";
+import { SelectedDirective } from './directives/SelectedDirective';
 
 
 @NgModule({
@@ -30,11 +31,12 @@ import { AddPhotoModalComponent } from "./photo-list/add-photo-modal/add-photo-m
     AlbumItemComponent,
     PhotoItemComponent,
     DeleteModalDialogComponent,
-    AutofocusDirective,
     AlbumNewComponent,
     AlbumEditComponent,
     AlbumConfirmedComponent,
-    AddPhotoModalComponent
+    AddPhotoModalComponent,
+    AutofocusDirective,
+    SelectedDirective,
   ],
   imports: [
     BrowserModule,
@@ -53,3 +55,4 @@ import { AddPhotoModalComponent } from "./photo-list/add-photo-modal/add-photo-m
 })
 export class AppModule { }
 //https://material.io/icons/ - список иконок
+/*TODO - модель данных альбом - список фото, добавлять и отображать фото в рамках определенного альбома*/
