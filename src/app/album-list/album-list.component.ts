@@ -36,6 +36,7 @@ export class AlbumListComponent implements OnInit, OnDestroy {
     const newAlbum = new Album(`Album № ${length + 1}`);
     newAlbum.mode = AlbumMode.Newest;
     this.albumList.unshift(newAlbum);
+    this.sourceList = [...this.albumList];
   }
 
   deleteAlbum(album: Album) {
@@ -44,6 +45,7 @@ export class AlbumListComponent implements OnInit, OnDestroy {
       if (album) {
         //удаление альбома из списка
         this.removeAlbumFromList(album);
+        this.sourceList = [...this.albumList];
       }
     });
   }
