@@ -9,9 +9,11 @@
       </div>
     </div>
   </div>
-  <div class="card-body">
-    <div class="row" style="height: 600px; overflow-y: scroll;">
-      <!--<app-photo-item></app-photo-item>-->
+  <div class="card-body"  style="height: 400px; overflow-y: scroll;">
+    <div class="row ">
+      <div class="col-md-3 photo-container" *ngFor="let photo of activeAlbum.photoList">
+          <img [src]="photo.src" class="photo-preview">
+      </div>
     </div>
   </div>
   <div class="card-footer" style="background: none;">

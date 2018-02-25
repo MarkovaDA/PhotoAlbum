@@ -10,7 +10,7 @@ import { DeleteModalDialogComponent } from './delete-modal-dialog/modal-dialog.c
 })
 export class AlbumListComponent implements OnInit, OnDestroy {
   albumList: Album[];
-  selectedAlbum: Album; //выбранный альбом (с которым в данный момент ведет работу пользователь)
+  selectedAlbum: Album;
   private sourceList: Album[];
 
   @Output() onSelectedAlbumChanged: EventEmitter<Album>;
@@ -43,9 +43,12 @@ export class AlbumListComponent implements OnInit, OnDestroy {
     const modalDialog = this.openModalDialog(album);
     modalDialog.afterClosed().subscribe(album => {
       if (album) {
-        //удаление альбома из списка
-        this.removeAlbumFromList(album);
+        // удаление альбома из списка
+        const index = this.removeAlbumFromList(album);
         this.sourceList = [...this.albumList];
+        if (index < this.albumList.length) {
+          this.switchSelectedAlbum(this.albumList[index]);
+        }
       }
     });
   }
@@ -53,15 +56,16 @@ export class AlbumListComponent implements OnInit, OnDestroy {
   removeAlbumFromList(album: Album) {
     const index = this.albumList.indexOf(album);
     this.albumList.splice(index, 1);
+    return index;
   }
 
   findAlbumsByPattern(pattern: string) {
-    if (pattern == '') {
+    if (pattern === '') {
       this.resetSearchResults();
       return;
     }
     this.albumList = this.albumList.filter((album) => {
-      return album.title.includes(pattern)
+      return album.title.includes(pattern);
     });
   }
 

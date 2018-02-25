@@ -1,5 +1,6 @@
 export class Photo {
   src: string;
-  description: string = '';
+  description = '';
   creationDate: Date;
+  isConfirmed: boolean;
 }

@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { AddPhotoModalComponent } from "./add-photo-modal/add-photo-modal.component";
+import { AddPhotoModalComponent } from './add-photo-modal/add-photo-modal.component';
 import { Photo } from '../model/Photo';
 
 @Component({
@@ -9,11 +9,9 @@ import { Photo } from '../model/Photo';
   styleUrls: ['./photo-list.component.css']
 })
 export class PhotoListComponent implements OnInit {
-  photoList: Photo[];
   @Input() activeAlbum;
 
   constructor(public dialog: MatDialog) {
-    this.photoList = [];
   }
 
   ngOnInit() {
@@ -25,12 +23,10 @@ export class PhotoListComponent implements OnInit {
       width: '500px',
       data: null
     });
+    // подписываемся на события диалогового окна
     addPhotoModalDialog.afterClosed().subscribe(image => {
-      if (image) {
-        this.photoList.unshift(image);
-        console.log(this.photoList);
-        //добавить фотографию в список и отобразить на экране
-        //потография должна оссациироваться с альбомом
+      if (image && image.isConfirmed) {
+        this.activeAlbum.photoList.unshift(image);
       }
     });
   }

@@ -12,13 +12,12 @@ import { SearchComponent } from './search/search.component';
 import { AlbumListComponent } from './album-list/album-list.component';
 import { PhotoListComponent } from './photo-list/photo-list.component';
 import { AlbumItemComponent } from './album-list/album-item/album-item.component';
-import { PhotoItemComponent } from './photo-list/photo-item/photo-item.component';
 import { DeleteModalDialogComponent } from './album-list/delete-modal-dialog/modal-dialog.component';
-import { AutofocusDirective } from "./directives/AutofocusDirective";
-import { AlbumNewComponent } from "./album-list/album-item/album-new/album-new.component";
-import { AlbumEditComponent } from "./album-list/album-item/album-edit/album-edit.component";
-import { AlbumConfirmedComponent } from "./album-list/album-item/album-confirmed/album-confirmed.component";
-import { AddPhotoModalComponent } from "./photo-list/add-photo-modal/add-photo-modal.component";
+import { AutofocusDirective } from './directives/AutofocusDirective';
+import { AlbumNewComponent } from './album-list/album-item/album-new/album-new.component';
+import { AlbumEditComponent } from './album-list/album-item/album-edit/album-edit.component';
+import { AlbumConfirmedComponent } from './album-list/album-item/album-confirmed/album-confirmed.component';
+import { AddPhotoModalComponent } from './photo-list/add-photo-modal/add-photo-modal.component';
 import { SelectedDirective } from './directives/SelectedDirective';
 
 
@@ -29,7 +28,6 @@ import { SelectedDirective } from './directives/SelectedDirective';
     AlbumListComponent,
     PhotoListComponent,
     AlbumItemComponent,
-    PhotoItemComponent,
     DeleteModalDialogComponent,
     AlbumNewComponent,
     AlbumEditComponent,
@@ -54,5 +52,4 @@ import { SelectedDirective } from './directives/SelectedDirective';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-//https://material.io/icons/ - список иконок
-/*TODO - модель данных альбом - список фото, добавлять и отображать фото в рамках определенного альбома*/
+// план работ - организовать отслеживание прогрузки элементов по прокрутке основного контента

@@ -1,0 +1,21 @@
+.photo-preview {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+}
+
+.photo-container {
+  /*position: relative;*/
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1000;
+  padding: 10px;
+  background: silver;
+  margin: 5px;
+}

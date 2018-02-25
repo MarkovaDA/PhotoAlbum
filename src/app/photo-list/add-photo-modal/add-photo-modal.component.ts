@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {Photo} from "../../model/Photo";
+import { Photo } from '../../model/Photo';
 
 @Component({
   selector: 'app-add-photo-modal',
@@ -11,10 +11,10 @@ export class AddPhotoModalComponent implements OnInit {
   newPhoto: Photo;
   constructor(public dialogRef: MatDialogRef<AddPhotoModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.newPhoto = new Photo();
   }
 
   ngOnInit() {
+    this.newPhoto = new Photo();
   }
 
   onCancelModalBtnClick() {
@@ -22,7 +22,14 @@ export class AddPhotoModalComponent implements OnInit {
   }
 
   onChangeFileField(event) {
-    const { value } = event.srcElement;
-    this.newPhoto.src = value;
+    if (event.target.files && event.target.files[0]) {
+      this.newPhoto.isConfirmed = true;
+      // изменить эту конструкцию
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.newPhoto.src = e.target.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 }
