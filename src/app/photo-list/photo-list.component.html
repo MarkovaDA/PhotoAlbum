@@ -9,7 +9,8 @@
 <hr/>
 <div style="height: 400px; overflow-y: scroll;">
     <div class="row" style="width: 90% !important;">
-      <div class="col-md-3 photo-container" *ngFor="let photo of activeAlbum.photoList">
+      <div class="col-md-3 photo-container" *ngFor="let photo of activeAlbum.photoList"
+           (click)="launchPhotoPreview()">
         <img [src]="photo.src" class="photo-preview">
       </div>
     </div>

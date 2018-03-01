@@ -50,6 +50,9 @@ export class AlbumListComponent implements OnInit, OnDestroy {
         if (index < this.albumList.length) {
           this.switchSelectedAlbum(this.albumList[index]);
         }
+        else if (index >= 0){
+          this.switchSelectedAlbum(this.albumList[index-1]);
+        }
       }
     });
   }

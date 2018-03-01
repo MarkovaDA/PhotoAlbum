@@ -19,6 +19,7 @@ import { AlbumEditComponent } from './album-list/album-item/album-edit/album-edi
 import { AlbumConfirmedComponent } from './album-list/album-item/album-confirmed/album-confirmed.component';
 import { AddPhotoModalComponent } from './photo-list/add-photo-modal/add-photo-modal.component';
 import { SelectedDirective } from './directives/SelectedDirective';
+import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { SelectedDirective } from './directives/SelectedDirective';
     AddPhotoModalComponent,
     AutofocusDirective,
     SelectedDirective,
+    PhotoGalleryComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,7 @@ import { SelectedDirective } from './directives/SelectedDirective';
     MatDialogModule
   ],
   providers: [],
-  entryComponents: [DeleteModalDialogComponent, AddPhotoModalComponent],
+  entryComponents: [DeleteModalDialogComponent, AddPhotoModalComponent, PhotoGalleryComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
