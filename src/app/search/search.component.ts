@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -29,5 +29,4 @@ export class SearchComponent implements OnInit {
     this.searchField.setValue('');
     this.onSearchPatternReady.emit('');
   }
-
 }

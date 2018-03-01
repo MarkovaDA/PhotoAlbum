@@ -1,30 +1,25 @@
-<div class="card">
-  <div class="card-header">
-    <div class="row justify-content-between align-items-center">
-      <div class="col-auto">
-        <h4>Albums</h4>
-      </div>
-      <div class="col-auto">
-        <app-search (onSearchPatternReady)="findAlbumsByPattern($event)"></app-search>
-      </div>
-    </div>
+<div class="row justify-content-between align-items-center">
+  <div class="col-auto">
+    <h4>Альбомы</h4>
   </div>
-  <div class="card-body">
-    <!--список альбомов-->
-    <div style="height: 400px; overflow-y: scroll;">
-      <mat-list class = "album-list">
-        <app-album-item *ngFor="let album of albumList" [album]="album"
-                        (onAlbumDelete)="deleteAlbum($event)"
-                        (onAlbumNewestDelete)="removeAlbumFromList($event)" (click)="switchSelectedAlbum(album)" [isActive]="album == selectedAlbum">
-        </app-album-item>
-      </mat-list>
-    </div>
+  <div class="col-auto">
+    <app-search (onSearchPatternReady)="findAlbumsByPattern($event)"></app-search>
   </div>
-  <div class="card-footer" style="background: none;">
-    <div class="float-right">
-      <button type="button" class="btn btn-indigo px-3" (click)="createAlbum()" style="border-radius: 50%;">
-        <i class="fa fa-plus" aria-hidden="true"></i>
-      </button>
-    </div>
+</div>
+<hr/>
+<div style="height: 400px; overflow-y: scroll;">
+  <div>
+    <mat-list class = "album-list">
+      <app-album-item *ngFor="let album of albumList" [album]="album"
+                      (onAlbumDelete)="deleteAlbum($event)"
+                      (onAlbumNewestDelete)="removeAlbumFromList($event)" (click)="switchSelectedAlbum(album)" [isActive]="album == selectedAlbum">
+      </app-album-item>
+    </mat-list>
   </div>
+</div>
+<hr/>
+<div class="float-right">
+  <button type="button" class="btn btn-indigo px-3" (click)="createAlbum()" style="border-radius: 50%;">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
 </div>

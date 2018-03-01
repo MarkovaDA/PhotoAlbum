@@ -37,6 +37,7 @@ export class AlbumListComponent implements OnInit, OnDestroy {
     newAlbum.mode = AlbumMode.Newest;
     this.albumList.unshift(newAlbum);
     this.sourceList = [...this.albumList];
+    this.switchSelectedAlbum(this.albumList[0]);
   }
 
   deleteAlbum(album: Album) {
@@ -64,7 +65,7 @@ export class AlbumListComponent implements OnInit, OnDestroy {
       this.resetSearchResults();
       return;
     }
-    this.albumList = this.albumList.filter((album) => {
+    this.albumList = this.sourceList.filter((album) => {
       return album.title.includes(pattern);
     });
   }
