@@ -30,7 +30,7 @@ export class AlbumEditComponent implements OnInit {
 
   onInputEntered(key) {
     const { code } = key;
-    if (code == 'Enter') {
+    if (code === 'Enter') {
       this.confirmNewAlbum(this.albumEditedTitleField.nativeElement.value);
     }
   }

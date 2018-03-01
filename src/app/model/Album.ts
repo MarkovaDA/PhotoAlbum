@@ -8,10 +8,10 @@ export enum AlbumMode {
 }
 
 export class Album {
-  title: string;
-  mode: AlbumMode;
-  creationDate: Date;
-  photoList: Array<Photo>;
+  title: string; // название
+  mode: AlbumMode; // режим 
+  creationDate: Date; // дата создания
+  photoList: Array<Photo>; // список фотографий
   public constructor(title: string) {
     this.title = title;
     this.creationDate = new Date();

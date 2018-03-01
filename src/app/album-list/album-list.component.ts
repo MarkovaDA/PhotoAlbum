@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Album, AlbumMode } from '../model/Album';
 import { DeleteModalDialogComponent } from './delete-modal-dialog/modal-dialog.component';
@@ -42,16 +42,15 @@ export class AlbumListComponent implements OnInit, OnDestroy {
 
   deleteAlbum(album: Album) {
     const modalDialog = this.openModalDialog(album);
-    modalDialog.afterClosed().subscribe(album => {
-      if (album) {
+    modalDialog.afterClosed().subscribe(_album => {
+      if (_album) {
         // удаление альбома из списка
-        const index = this.removeAlbumFromList(album);
+        const index = this.removeAlbumFromList(_album);
         this.sourceList = [...this.albumList];
         if (index < this.albumList.length) {
           this.switchSelectedAlbum(this.albumList[index]);
-        }
-        else if (index >= 0){
-          this.switchSelectedAlbum(this.albumList[index-1]);
+        } else if (index >= 0) {
+          this.switchSelectedAlbum(this.albumList[index - 1]);
         }
       }
     });
@@ -90,6 +89,8 @@ export class AlbumListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.albumList = this.albumList.filter(album => {return album.mode != AlbumMode.Deleted});
+    this.albumList = this.albumList.filter((album) => {
+      return album.mode !== AlbumMode.Deleted;
+    });
   }
 }

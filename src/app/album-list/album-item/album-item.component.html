@@ -1,4 +1,7 @@
-<app-album-confirmed *ngIf="album.isConfirmed()" [album]="album" (onAlbumDelete)="onAlbumDeleteQuery()" [isActive]="isActive"></app-album-confirmed>
+<app-album-confirmed *ngIf="album.isConfirmed()" [album]="album"
+                     (onAlbumDelete)="onAlbumDeleteQuery()"
+                     [isActive]="isActive">
+</app-album-confirmed>
 <app-album-new *ngIf="album.isNewest()" [album]="album"></app-album-new>
 <app-album-edit *ngIf="album.isEdited()" [album]="album"></app-album-edit>
 

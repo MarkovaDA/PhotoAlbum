@@ -2,6 +2,7 @@ import {Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AddPhotoModalComponent } from './add-photo-modal/add-photo-modal.component';
 import { PhotoGalleryComponent } from '../photo-gallery/photo-gallery.component';
+import { Photo } from '../model/Photo';
 
 @Component({
   selector: 'app-photo-list',
@@ -18,11 +19,11 @@ export class PhotoListComponent implements OnInit {
 
   }
 
-  launchPhotoPreview() {
+  launchPhotoPreview(photo: Photo) {
     const photoPreviewModalDialog = this.dialog.open(PhotoGalleryComponent, {
       width: '80%',
       height: '90%',
-      data: null
+      data: photo
     });
   }
 
