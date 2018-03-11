@@ -1,6 +1,6 @@
 <div class="row justify-content-between align-items-center">
   <div class="col-auto">
-    <h4>Альбомы</h4>
+    <h5>Альбомы</h5>
   </div>
   <div class="col-auto">
     <app-search (onSearchPatternReady)="findAlbumsByPattern($event)"></app-search>
@@ -9,7 +9,7 @@
 <hr/>
 <div style="height: 400px; overflow-y: scroll;">
   <div>
-    <mat-list class = "album-list">
+    <mat-list>
       <app-album-item *ngFor="let album of albumList" [album]="album"
                       (onAlbumDelete)="deleteAlbum($event)"
                       (onAlbumNewestDelete)="removeAlbumFromList($event)" (click)="switchSelectedAlbum(album)" [isActive]="album == selectedAlbum">

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { Album, AlbumMode } from "../../../model/Album";
+import {Album, AlbumMode} from '../../../../model/Album';
+
 
 @Component({
   selector: 'app-album-confirmed',
@@ -10,7 +11,7 @@ export class AlbumConfirmedComponent implements OnInit {
   @Input() album: Album;
   @Input() isActive: boolean;
   @Output() onAlbumDelete: EventEmitter<Album>;
-  datePattern = 'MM/dd/yyyy';
+  datePattern = 'dd.MM.yyyy';
 
   constructor() {
     this.onAlbumDelete = new EventEmitter();

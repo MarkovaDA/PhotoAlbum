@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {Album, AlbumMode} from "../../../model/Album";
+import {Album, AlbumMode} from '../../../../model/Album';
 
 @Component({
   selector: 'app-album-new',

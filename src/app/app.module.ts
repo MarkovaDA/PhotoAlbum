@@ -9,17 +9,22 @@ import { MatButtonModule,
   MatDialogModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { AlbumListComponent } from './album-list/album-list.component';
-import { PhotoListComponent } from './photo-list/photo-list.component';
-import { AlbumItemComponent } from './album-list/album-item/album-item.component';
-import { DeleteModalDialogComponent } from './album-list/delete-modal-dialog/modal-dialog.component';
+import { PhotoListComponent } from './main/photo-list/photo-list.component';
 import { AutofocusDirective } from './directives/AutofocusDirective';
-import { AlbumNewComponent } from './album-list/album-item/album-new/album-new.component';
-import { AlbumEditComponent } from './album-list/album-item/album-edit/album-edit.component';
-import { AlbumConfirmedComponent } from './album-list/album-item/album-confirmed/album-confirmed.component';
-import { AddPhotoModalComponent } from './photo-list/add-photo-modal/add-photo-modal.component';
+import { AddPhotoModalComponent } from './main/photo-list/add-photo-modal/add-photo-modal.component';
 import { SelectedDirective } from './directives/SelectedDirective';
-import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
+import { PhotoGalleryComponent } from './main/photo-gallery/photo-gallery.component';
+import { HeaderComponent } from './header/header.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutes } from './app.routes';
+import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
+import { AlbumListComponent } from './main/album-list/album-list.component';
+import { AlbumItemComponent } from './main/album-list/album-item/album-item.component';
+import { DeleteModalDialogComponent } from './main/album-list/delete-modal-dialog/modal-dialog.component';
+import { AlbumNewComponent } from './main/album-list/album-item/album-new/album-new.component';
+import { AlbumEditComponent } from './main/album-list/album-item/album-edit/album-edit.component';
+import { AlbumConfirmedComponent } from './main/album-list/album-item/album-confirmed/album-confirmed.component';
 
 
 @NgModule({
@@ -37,10 +42,15 @@ import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
     AutofocusDirective,
     SelectedDirective,
     PhotoGalleryComponent,
+    HeaderComponent,
+    LoginComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule,
+    RouterModule.forRoot(AppRoutes),
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -54,4 +64,3 @@ import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-// план работ - организовать отслеживание прогрузки элементов по прокрутке основного контента

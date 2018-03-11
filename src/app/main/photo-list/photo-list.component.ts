@@ -2,7 +2,7 @@ import {Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AddPhotoModalComponent } from './add-photo-modal/add-photo-modal.component';
 import { PhotoGalleryComponent } from '../photo-gallery/photo-gallery.component';
-import { Photo } from '../model/Photo';
+import { Photo } from '../../model/Photo';
 
 @Component({
   selector: 'app-photo-list',

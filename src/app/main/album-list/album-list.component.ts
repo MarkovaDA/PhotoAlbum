@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Album, AlbumMode } from '../model/Album';
+import { Album, AlbumMode } from '../../model/Album';
 import { DeleteModalDialogComponent } from './delete-modal-dialog/modal-dialog.component';
 
 @Component({

@@ -5,7 +5,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Album } from '../../model/Album';
+import { Album } from '../../../model/Album';
 
 
 @Component({

@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 py-2">
+      <app-album-list (onSelectedAlbumChanged)="switchActiveAlbum($event)"></app-album-list>
+    </div>
+    <div class="col-md-8 py-2">
+      <app-photo-list [activeAlbum]="activeAlbum"></app-photo-list>
+    </div>
+  </div>
+</div>
