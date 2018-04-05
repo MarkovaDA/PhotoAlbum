@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -6,7 +7,9 @@ import { MatButtonModule,
   MatListModule,
   MatInputModule,
   MatIconModule,
-  MatDialogModule } from '@angular/material';
+  MatDialogModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { PhotoListComponent } from './main/photo-list/photo-list.component';
@@ -25,6 +28,8 @@ import { DeleteModalDialogComponent } from './main/album-list/delete-modal-dialo
 import { AlbumNewComponent } from './main/album-list/album-item/album-new/album-new.component';
 import { AlbumEditComponent } from './main/album-list/album-item/album-edit/album-edit.component';
 import { AlbumConfirmedComponent } from './main/album-list/album-item/album-confirmed/album-confirmed.component';
+import { AuthService } from './api/AuthService';
+
 
 
 @NgModule({
@@ -51,15 +56,17 @@ import { AlbumConfirmedComponent } from './main/album-list/album-item/album-conf
     FormsModule,
     RouterModule,
     RouterModule.forRoot(AppRoutes),
+    HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatListModule,
     MatInputModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [AuthService],
   entryComponents: [DeleteModalDialogComponent, AddPhotoModalComponent, PhotoGalleryComponent],
   bootstrap: [AppComponent]
 })

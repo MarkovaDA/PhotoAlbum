@@ -9,7 +9,7 @@ export enum AlbumMode {
 
 export class Album {
   title: string; // название
-  mode: AlbumMode; // режим 
+  mode: AlbumMode; // режим
   creationDate: Date; // дата создания
   photoList: Array<Photo>; // список фотографий
   public constructor(title: string) {

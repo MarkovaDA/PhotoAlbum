@@ -12,16 +12,21 @@
                 </li>
             </ul>
             <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="'login'">
-                      <i class="fa fa-home"></i>Вход
-                    </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link">
-                    <i class="fa fa-user"></i>Регистрация
+              <li *ngIf="isAuthorized()" class="nav-item">
+                <a class="nav-link">
+                  <i class="fa fa-user"></i> {{currentUserLogin()}}
+                </a>
+              </li>
+              <li *ngIf="!isAuthorized()" class="nav-item">
+                  <a class="nav-link" [routerLink]="'/login'">
+                    <i class="fa fa-home"></i>Вход
                   </a>
-                </li>
+              </li>
+              <li *ngIf="isAuthorized()" class="nav-item">
+                <a class="nav-link" (click)="logOut()">
+                  <i class="fa fa-lock"></i>Выход
+                </a>
+              </li>
             </ul>
         </div>
     </nav>
