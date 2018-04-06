@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { User } from '../model/User';
 import { Credential } from '../model/Credential';
 import { environment } from '../../environments/environment';
@@ -37,11 +37,32 @@ export class AuthService {
     this.authStatus = false;
   }
 
+  // авторизован ли пользователь в системе
+  public authorize(): Observable<boolean> {
+    return new Observable<boolean>((observer) => {
+      const token = this.getCachedToken();
+      // токен существует
+      if (!!token) {
+        this.httpClient.get(`${environment.API_URL}/user/`, {
+          headers: this.getAuthHeader(),
+        }).subscribe((user: User) => {
+          this.authStatus = true;
+          this.currentUser = user;
+          return observer.next(true); // токен не истек
+        }, (failure) => {
+          this.authStatus = false;
+          return observer.next(false); // токен истек
+        });
+      } else {
+        // токена не существует
+        this.authStatus = false;
+        return observer.next(false);
+      }
+    });
+  }
+
   public isAuthorized(): boolean {
-    /*
-    *Если либо this.authStatus = true (только что произошел логин) либо имеется токен в кеше и этот токен не истек
-    * */
-    return !!this.authStatus;
+    return this.authStatus;
   }
 
   public getCurrentUser(): User {
@@ -63,5 +84,10 @@ export class AuthService {
 
   private clearCredentials() {
     localStorage.clear();
+  }
+
+  private getAuthHeader() {
+    const token = this.getCachedToken();
+    return new HttpHeaders().set('token', `Bearer ${token}`);
   }
 }

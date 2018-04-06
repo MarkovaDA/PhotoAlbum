@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../api/AuthService';
 import { User } from '../model/User';
 import { Router } from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +18,7 @@ export class LoginComponent implements OnInit {
     this.currentUser = new User();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login() {
     this.signInFailedShow = false;
@@ -35,9 +35,5 @@ export class LoginComponent implements OnInit {
         }
         signIn.unsubscribe();
       });
-  }
-
-  isAuthorized(): boolean {
-    return this.authService.isAuthorized();
   }
 }
