@@ -8,15 +8,17 @@ export enum AlbumMode {
 }
 
 export class Album {
+  id: number;
   title: string; // название
   mode: AlbumMode; // режим
   creationDate: Date; // дата создания
   photoList: Array<Photo>; // список фотографий
-  public constructor(title: string) {
+  public constructor(id: number, title: string) {
     this.title = title;
     this.creationDate = new Date();
     this.mode = AlbumMode.Confirmed;
     this.photoList = [];
+    this.id = id;
   }
 
   public isNewest() {
@@ -33,5 +35,9 @@ export class Album {
 
   public isDeleted() {
     return this.mode === AlbumMode.Deleted;
+  }
+
+  public getId() {
+    return this.id;
   }
 }

@@ -22,14 +22,10 @@ export class AddPhotoModalComponent implements OnInit {
   }
 
   onChangeFileField(event) {
-    if (event.target.files && event.target.files[0]) {
+    const files = event.target.files;
+    if (files && files[0]) {
       this.newPhoto.isConfirmed = true;
-      // изменить эту конструкцию
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.newPhoto.src = e.target.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
+      this.newPhoto.file = files[0];
     }
   }
 }

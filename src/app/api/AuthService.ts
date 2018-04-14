@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { User } from '../model/User';
 import { Credential } from '../model/Credential';
 import { environment } from '../../environments/environment';
@@ -86,7 +86,7 @@ export class AuthService {
     localStorage.clear();
   }
 
-  private getAuthHeader() {
+   getAuthHeader() {
     const token = this.getCachedToken();
     return new HttpHeaders().set('token', `Bearer ${token}`);
   }

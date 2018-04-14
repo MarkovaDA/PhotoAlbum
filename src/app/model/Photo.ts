@@ -1,6 +1,7 @@
 export class Photo {
-  src: string;
+  id: string; // уникальный идентификатор ресурса
   description = '';  // описание фото
   creationDate: Date; // дата создания
   isConfirmed: boolean;
+  file: File;
 }

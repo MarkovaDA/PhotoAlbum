@@ -19,7 +19,7 @@ export class AlbumListComponent implements OnInit, OnDestroy {
     this.albumList = [];
 
     for (let i = 0; i < 10; i++) {
-      this.albumList.push(new Album(`Album № ${i + 1}`));
+      this.albumList.push(new Album(i, `Album № ${i + 1}`));
     }
     this.selectedAlbum = this.albumList[0];
     this.onSelectedAlbumChanged = new EventEmitter();
@@ -33,7 +33,7 @@ export class AlbumListComponent implements OnInit, OnDestroy {
 
   createAlbum() {
     const length = this.albumList.length;
-    const newAlbum = new Album(`Album № ${length + 1}`);
+    const newAlbum = new Album(length, `Album № ${length + 1}`);
     newAlbum.mode = AlbumMode.Newest;
     this.albumList.unshift(newAlbum);
     this.sourceList = [...this.albumList];

@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    console.log('APP COMPONENT');
     const authObserver = this.authService.authorize().subscribe((status) => {
       if (status) {
         this.router.navigateByUrl('/gallery');

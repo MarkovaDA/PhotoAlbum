@@ -29,6 +29,7 @@ import { AlbumNewComponent } from './main/album-list/album-item/album-new/album-
 import { AlbumEditComponent } from './main/album-list/album-item/album-edit/album-edit.component';
 import { AlbumConfirmedComponent } from './main/album-list/album-item/album-confirmed/album-confirmed.component';
 import { AuthService } from './api/AuthService';
+import { PhotoService } from './api/PhotoService';
 
 
 
@@ -66,7 +67,7 @@ import { AuthService } from './api/AuthService';
     MatDialogModule,
     MatProgressSpinnerModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, PhotoService],
   entryComponents: [DeleteModalDialogComponent, AddPhotoModalComponent, PhotoGalleryComponent],
   bootstrap: [AppComponent]
 })

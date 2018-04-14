@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material';
 import { AddPhotoModalComponent } from './add-photo-modal/add-photo-modal.component';
 import { PhotoGalleryComponent } from '../photo-gallery/photo-gallery.component';
 import { Photo } from '../../model/Photo';
+import { PhotoService } from '../../api/PhotoService';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-photo-list',
@@ -11,13 +13,12 @@ import { Photo } from '../../model/Photo';
 })
 export class PhotoListComponent implements OnInit {
   @Input() activeAlbum;
-
-  constructor(public dialog: MatDialog) {
+  newImage: Photo;
+  constructor(public dialog: MatDialog,
+              private photoService: PhotoService) {
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   launchPhotoPreview(photo: Photo) {
     const photoPreviewModalDialog = this.dialog.open(PhotoGalleryComponent, {
@@ -35,8 +36,24 @@ export class PhotoListComponent implements OnInit {
     // подписываемся на события диалогового окна
     addPhotoModalDialog.afterClosed().subscribe(image => {
       if (image && image.isConfirmed) {
-        this.activeAlbum.photoList.unshift(image);
+        this.newImage = image;
+        this.activeAlbum.photoList.unshift(this.newImage);
+        this.uploadFile(image.file, image.file.name, image.description);
       }
+    });
+  }
+
+  getResourceUrl(photo: Photo): string {
+    return `${environment.API_URL}/photo/get?id=${photo.id}`;
+  }
+
+  private uploadFile(file: File, title: string, description: string) {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    this.photoService.uploadPhoto(this.activeAlbum.getId(), title, description, formData).subscribe((meta) => {
+      this.newImage.id = meta['id'];
+    }, (error) => {
+      console.log(error);
     });
   }
 }
