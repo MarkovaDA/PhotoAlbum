@@ -22,4 +22,13 @@ export class PhotoService {
           .set('description', description)
     });
   }
+
+  public getPhotoInAlbum(albumId: number): Observable<any> {
+    return this.httpClient.get(`${environment.API_URL}/photo/list`, {
+      headers: this.authService.getAuthHeader()
+        .append('Accept', 'application/json'),
+      params: new HttpParams()
+        .set('albumId', `${albumId}`)
+    });
+  }
 }

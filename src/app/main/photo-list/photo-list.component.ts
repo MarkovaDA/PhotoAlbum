@@ -1,4 +1,4 @@
-import {Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AddPhotoModalComponent } from './add-photo-modal/add-photo-modal.component';
 import { PhotoGalleryComponent } from '../photo-gallery/photo-gallery.component';
@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
   templateUrl: './photo-list.component.html',
   styleUrls: ['./photo-list.component.css']
 })
-export class PhotoListComponent implements OnInit {
+export class PhotoListComponent implements OnInit, OnChanges {
   @Input() activeAlbum;
   newImage: Photo;
   constructor(public dialog: MatDialog,
@@ -52,6 +52,14 @@ export class PhotoListComponent implements OnInit {
     formData.append('file', file, file.name);
     this.photoService.uploadPhoto(this.activeAlbum.getId(), title, description, formData).subscribe((meta) => {
       this.newImage.id = meta['id'];
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  ngOnChanges() {
+    this.photoService.getPhotoInAlbum(this.activeAlbum.getId()).subscribe((response) => {
+      // добавить фотографии в activeAlbum.photoList
     }, (error) => {
       console.log(error);
     });
