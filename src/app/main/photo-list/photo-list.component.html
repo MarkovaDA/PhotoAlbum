@@ -1,17 +1,26 @@
-<div class="row justify-content-between align-items-center">
-  <div class="col-auto">
+<div style="display:flex; justify-content: space-between; align-items: center;">
+  <div>
     <h5>{{activeAlbum.title}}</h5>
   </div>
-  <div class="col-auto">
+  <div>
     <app-search></app-search>
+    <button mat-icon-button color="primary" (click)="confirmDelete()" [disabled]="!isSmthPhotoSelected()">
+      <mat-icon>delete_forever</mat-icon>
+    </button>
   </div>
 </div>
 <hr/>
 <div style="height: 400px; overflow-y: scroll;">
-    <div class="row" style="width: 90% !important;">
-      <div class="col-md-3 photo-container" *ngFor="let photo of activeAlbum.photoList"
-           (click)="launchPhotoPreview(photo)">
-        <img [src]="getResourceUrl(photo)" class="photo-preview">
+    <div class="row">
+      <div *ngFor="let photo of activeAlbum.photoList" class="col-md-3 photo-container">
+        <div >
+          <div>
+            <img [src]="getResourceUrl(photo)" class="photo-preview" (click)="launchPhotoPreview(photo)">
+          </div>
+          <div style="margin: 5px; float: right;">
+            <mat-checkbox [color]="'primary'" (change)="setSelected($event, photo)"></mat-checkbox>
+          </div>
+        </div>
       </div>
     </div>
 </div>

@@ -58,10 +58,27 @@ export class PhotoListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.photoService.getPhotoInAlbum(this.activeAlbum.getId()).subscribe((response) => {
-      // добавить фотографии в activeAlbum.photoList
-    }, (error) => {
-      console.log(error);
+    this.photoService.getPhotoInAlbum(this.activeAlbum.getId()).subscribe((list: Photo[]) => {
+      this.activeAlbum.photoList = list;
     });
+  }
+
+  setSelected($event, photo) {
+    photo.selected = $event.checked;
+  }
+
+  confirmDelete() {
+    const list = this.activeAlbum.photoList;
+    const deletedPhotos = this.activeAlbum.photoList
+      .filter((photo) => photo.selected === true)
+      .map(photo => photo.id);
+
+    this.photoService.deletePhotos(deletedPhotos).subscribe(() => {
+      this.activeAlbum.photoList = list.filter((photo) => !photo.selected);
+    });
+  }
+
+  isSmthPhotoSelected(): boolean {
+    return this.activeAlbum.photoList.filter((photo) => photo.selected === true).length > 0;
   }
 }

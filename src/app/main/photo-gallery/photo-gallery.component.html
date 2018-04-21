@@ -1,7 +1,9 @@
-<div mat-dialog-content >
-  <div class="row">
+<div mat-dialog-content>
+  <div class="row py-4">
     <div class="col-md-8">
-      <p>Фотография</p>
+      <img [src]="getPreviewUrl()" style="width: 100%; height: auto;">
+      <span style="text-decoration: underline;">{{photo.title}}</span>
+      <span style="font-size: 12px;">{{photo.creationDate | date:'MM/dd/yyyy HH:mm'}}</span>
     </div>
     <div class="col-md-4" style="border-left: 1px solid lavender; height: 500px;">
       <mat-form-field style="width:100% !important;">

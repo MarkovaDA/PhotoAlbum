@@ -12,7 +12,7 @@
 .photo-container {
   /*position: relative;*/
   height: 200px;
-  width: 100%;
+  /*width: 100%;*/
   overflow: hidden;
   z-index: 1000;
   padding: 10px;

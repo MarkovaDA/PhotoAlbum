@@ -3,12 +3,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule,
+import {
+  MatButtonModule,
   MatListModule,
   MatInputModule,
   MatIconModule,
   MatDialogModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule, MatCardModule, MatCheckboxModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -65,6 +66,7 @@ import { PhotoService } from './api/PhotoService';
     MatInputModule,
     MatIconModule,
     MatDialogModule,
+    MatCheckboxModule,
     MatProgressSpinnerModule
   ],
   providers: [AuthService, PhotoService],
